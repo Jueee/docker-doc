@@ -105,6 +105,10 @@ Hello World
 将容器提交为镜像
 
 > docker commit -m "add phishing" -a "phishing" elastic_edison phishing:v1
+>
+> docker commit 39eaa5aa7332 python3.6.4-dev
+
+
 
 ### 镜像基本操作
 

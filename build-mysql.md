@@ -68,6 +68,7 @@ $ docker inspect mysql|grep IPAddress
 测试连接（容器内部连接）
 
 ```shell
+$ docker exec -it mysql mysql -ulocalhost -P3306 -uroot -p123456
 $ mysql -h172.17.0.2 -P3306 -uroot -p123456
 ```
 
@@ -86,12 +87,12 @@ $ docker logs -f mysql
 ##### 备份数据
 
 ```shell
-$ docker exec mysql sh -c 'exec mysqldump --all-databases -uroot -p"123456"' > all-databases.sql
+$ docker exec phishing.mysql sh -c 'exec mysqldump --all-databases -uroot -p"123456"' > all-databases.sql
 ```
 
 ##### 恢复数据
 
 ```shell
-$ docker exec -i mysql sh -c 'exec mysql -uroot -p"123456-abc"' < all-databases.sql
+$ docker exec -i phishing.mysql sh -c 'exec mysql -uroot -p"123456"' < all-databases.sql
 ```
 

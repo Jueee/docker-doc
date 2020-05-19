@@ -1,15 +1,4 @@
-##### 下载 kafka 镜像
-
-```shell
-$ docker pull wurstmeister/kafka
-$ docker images
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-kafka               latest              f9b990972689        5 days ago          104MB
-$ docker inspect wurstmeister/kafka|grep VERSION
-                "JAVA_VERSION=8u212",
-                "KAFKA_VERSION=2.5.0",
-                "SCALA_VERSION=2.12",
-```
+#### kafka 镜像比较
 
 ###### [spotify/kafka](https://hub.docker.com/r/spotify/kafka/)
 
@@ -27,6 +16,21 @@ $ docker inspect wurstmeister/kafka|grep VERSION
 
 维护较为频繁的一个Kafka镜像。只包含了Kafka，因此需要另行提供ZooKeeper，推荐使用同一作者提交的[wurstmeister/zookeeper](https://link.jianshu.com?t=https%3A%2F%2Fhub.docker.com%2Fr%2Fwurstmeister%2Fzookeeper%2F)。
  现在已经提供较新的 2.5.0 版本。
+
+#### wurstmeister/kafka
+
+##### 下载 kafka 镜像
+
+```shell
+$ docker pull wurstmeister/kafka
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+kafka               latest              f9b990972689        5 days ago          104MB
+$ docker inspect wurstmeister/kafka|grep VERSION
+                "JAVA_VERSION=8u212",
+                "KAFKA_VERSION=2.5.0",
+                "SCALA_VERSION=2.12",
+```
 
 ##### 运行 kafka 容器
 
@@ -49,7 +53,41 @@ $ docker run --name kafka \
 - `-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092` 配置kafka的监听端口
 - `-v /etc/localtime:/etc/localtime` 容器时间同步虚拟机的时间
 
-##### 测试 kafka 连接
+#### landoop/fast-data-dev
+
+##### 下载 kafka 镜像
+
+```shell
+$ docker pull landoop/fast-data-dev
+$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+landoop/fast-data-dev  latest              c06607a7dc0e        2 months ago        1.13GB
+```
+
+##### 运行 kafka 容器
+
+```shell
+$ docker run --rm -it --name kafka \
+	-p 2181:2181 \
+	-p 8081:8081 \
+	-p 8082:8082 \
+	-p 8083:8083 \
+	-p 9092:9092 \
+	-p 3030:3030 \
+	-e ADV_HOST=127.0.0.1 \
+	-d landoop/fast-data-dev
+```
+
+- `-p 9092:9092`: Kafka Broker
+- `-p 8081:8081`: Schema Registry
+- `-p 8082:8082`: Kafka REST Proxy
+- `-p 8083:8083`: Kafka Connect Distributed
+- `-p 2181:2181`: ZooKeeper
+- `-p 3030:3030`: Web Server
+
+数据目录：`/data`
+
+#### 测试 kafka 连接
 
 测试端口
 
@@ -69,7 +107,7 @@ $ docker exec -it kafka kafka-console-producer.sh --broker-list localhost:9092 -
 $ docker exec -it kafka kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
 ```
 
-##### 查看日志
+#### 查看日志
 
 ```shell
 $ docker logs -f kafka

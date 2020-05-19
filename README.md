@@ -1,8 +1,4 @@
-## play-with-docker
-
-Docker 不同组件的关系图：
-
-![1588220992557](assets/1588220992557.png)
+## docker-doc
 
 ##### 应用打包
 
@@ -23,3 +19,9 @@ Docker 不同组件的关系图：
 ##### 相关服务
 
 - [install-docker-harbor.md](install-docker-harbor.md)： docker 仓库
+
+##### docker 组件关系
+
+Docker 各个组件的关系图：
+
+![1588220992557](assets/1588220992557.png)
