@@ -11,13 +11,13 @@ logstash            7.7.0               30dcca1db5e9        8 days ago          
 
 基于目录
 
-```
+```shell
 /home/ant/docker/logstash/conf
 ```
 
 `core.conf` 文件
 
-```
+```conf
    input {
       kafka {
         id => "my_plugin_id"
@@ -55,7 +55,7 @@ LOGBACKTIME 20%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{HOUR}:?%{MINUTE}(?::?%{SECOND})
 
 `pipelines.yml` 文件（那个小杠杠很重要）
 
-```
+```yml
 $ cat pipelines.yml
 - pipeline.id: my-logstash
   path.config: "/usr/share/logstash/config/*.conf"
@@ -99,7 +99,7 @@ $ docker logs -f logstash
 <!-- kafka的appender配置 -->
 <Kafka name="KafkaAppender" topic="logger-channel">
     <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
-    <PatternLayout pattern="webphishing|%d|%level|%c.%m{15} - %m" />
+    <PatternLayout pattern="webphishing|%d|%level|%logger{15} - %m" />
     <Property name="bootstrap.servers">localhost:9092</Property>
 </Kafka>
 
