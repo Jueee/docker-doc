@@ -33,7 +33,7 @@ logstash            7.7.0               30dcca1db5e9        8 days ago          
 
        grok {
           patterns_dir => ["./patterns"]
-                match => { "message" => "%{WORD:module}\|%{LOGBACKTIME:timestamp}\|%{LOGLEVEL:level}\|%{JAVACLASS:class} - %{JAVALOGMESSAGE:logmessage}" }
+                match => { "message" => "%{USERNAME:module}\|%{LOGBACKTIME:timestamp}\|%{LOGLEVEL:level}\|%{JAVACLASS:class} - %{JAVALOGMESSAGE:logmessage}" }
         }
 
     }
@@ -160,6 +160,8 @@ spring.kafka.bootstrap-servers=127.0.0.1:9092
 Grok 正则测试
 
 > http://grokdebug.herokuapp.com/
+>
+> https://www.cnblogs.com/stozen/p/5638369.html
 
 其他资料
 

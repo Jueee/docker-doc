@@ -96,6 +96,8 @@ $ docker push debian.wei.org/yongqiang/debian-jdk8:v1.0.0
 
 #### 问题解决
 
+##### 问题一：
+
 ```shell
 $ docker login debian.wei.org
 Username: admin
@@ -116,5 +118,26 @@ Error response from daemon: Get https://debian.wei.org/v2/: dial tcp 10.196.8.15
 ```shell
 $ systemctl restart docker.service
 $ sudo service docker restart
+```
+
+##### 问题二
+
+> ERROR: for harbor-portal  Cannot start service portal: failed to initialize logging driver: dial tcp 127.0.0.1:1514: connect: connection refused
+
+排查：
+
+```
+$ docker logs harbor-log
+sudo: error in /etc/sudo.conf, line 0 while loading plugin "sudoers_policy"
+sudo: /usr/lib/sudo/sudoers.so must be owned by uid 0
+sudo: fatal error, unable to load plugins
+```
+
+解决：
+
+```
+# chmod 644 /usr/libexec/sudo/sudoers.so
+# chown -R root /usr/lib/sudo
+$ docker rmi goharbor/harbor-log:v2.0.0
 ```
 
