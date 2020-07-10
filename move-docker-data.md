@@ -56,3 +56,4 @@ systemctl enable docker
 ```
 
 启动之后确认docker 没有问题，删除旧的 `/var/lib/docker/` 目录。
+
