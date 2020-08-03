@@ -71,6 +71,12 @@ apt-get install  net-tools
 apt-get install iputils-ping
 ```
 
+##### 安装 netstat
+
+```
+apt-get install net-tools
+```
+
 ##### 安装MySQL
 
 ```

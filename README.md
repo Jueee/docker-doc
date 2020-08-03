@@ -2,9 +2,15 @@
 
 ### 安装Docker
 
-- [install-docker](install-docker.md)：安装 Docker
+- [install-docker-linux](install-docker-linux.md)：Linux 安装 Docker
+- [install-docker-windows](install-docker-windows.md)：Windows 安装 Docker
 - [install-docker-compose](install-docker-compose.md)：安装 docker-compose
 - [install-docker-harbor](install-docker-harbor.md)：安装 Docker 仓库 Harbor
+
+### 文档说明
+
+- [docs-docker](docs-docker.md)：docker 文档说明
+- [docs-docker-compose](docs-docker-compose.md)：docker-compose 文档说明
 
 ### 应用打包
 
@@ -30,8 +36,3 @@
 
 - [move-docker-data](move-docker-data.md)： 迁移 docker 默认仓库数据
 
-## docker 组件关系
-
-Docker 各个组件的关系图：
-
-![1588220992557](assets/1588220992557.png)
