@@ -6,6 +6,7 @@
 - [install-docker-windows](install-docker-windows.md)：Windows 安装 Docker
 - [install-docker-compose](install-docker-compose.md)：安装 docker-compose
 - [install-docker-harbor](install-docker-harbor.md)：安装 Docker 仓库 Harbor
+- [install-docker-ui-portainer](install-docker-ui-portainer.md)：Docker管理工具Portainer
 
 ### 文档说明
 
@@ -34,5 +35,7 @@
 
 ### 相关服务
 
-- [move-docker-data](move-docker-data.md)： 迁移 docker 默认仓库数据
+- [about-move-docker-data](about-move-docker-data.md)： 迁移 docker 默认仓库数据
+- [about-docker-iptables-false](about-docker-iptables-false.md)：docker 关闭 iptables 配置
+- [about-add-hosts](about-add-hosts.md)：添加自定义 hosts
 

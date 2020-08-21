@@ -8,7 +8,9 @@ GitHub
 
 > https://github.com/goharbor/harbor/releases
 
-#### 安装
+### 安装
+
+#### docker 安装
 
 ```shell
 $ wget https://github.com/goharbor/harbor/releases/download/v2.0.0-rc2/harbor-offline-installer-v2.0.0
@@ -47,7 +49,38 @@ data_volume: /data
 harbor_admin_password: Harbor12345
 ```
 
-#### 服务操作
+#### helm 安装
+
+新增仓库
+
+```
+helm repo add harbor https://helm.goharbor.io
+helm repo update
+```
+
+下载
+
+```
+helm pull harbor/harbor
+tar -xzvf harbor-1.4.2.tgz
+cd harbor/
+vi values.yaml
+```
+
+安装
+
+```
+helm install harbor harbor/harbor -f values.yaml
+helm list
+```
+
+查看状态
+
+```
+$ kg pod -n kube-system
+```
+
+### 服务操作
 
 关闭服务
 
@@ -61,7 +94,7 @@ $ sudo docker-compose down
 $ sudo docker-compose up -d
 ```
 
-#### 上传 harbor
+### 上传 harbor
 
 登录harbor
 
@@ -84,7 +117,7 @@ push
 $ docker push debian.wei.org/yongqiang/debian-jdk8:v1.0.0
 ```
 
-#### 访问 harbor
+### 访问 harbor
 
 > http://192.168.31.130/
 
@@ -94,9 +127,9 @@ $ docker push debian.wei.org/yongqiang/debian-jdk8:v1.0.0
 
 ![1588936763884](assets/1588936763884.png)
 
-#### 问题解决
+### 问题解决
 
-##### 问题一：
+#### 问题一：
 
 ```shell
 $ docker login debian.wei.org
@@ -120,7 +153,7 @@ $ systemctl restart docker.service
 $ sudo service docker restart
 ```
 
-##### 问题二
+#### 问题二
 
 > ERROR: for harbor-portal  Cannot start service portal: failed to initialize logging driver: dial tcp 127.0.0.1:1514: connect: connection refused
 
