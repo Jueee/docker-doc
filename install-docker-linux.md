@@ -78,3 +78,29 @@ Digest: sha256:2857989334428416b1ef369d6e029e912a7fe3ee7e57adc20b494cc940198258
 Status: Downloaded newer image for docker.io/debian:latest
 Hello World
 ```
+
+### 仓库配置
+
+```shell
+$ docker login debian.wei.org
+Username: admin
+Password:
+Error response from daemon: Get https://debian.wei.org/v2/: dial tcp 10.196.8.152:443: connect: connection refused
+```
+
+配置 `/etc/docker/daemon.json ` 文件，增加 `insecure-registries` 配置
+
+```json
+{
+     "insecure-registries":["debian.wei.org"]
+}
+```
+
+并重启 docker 生效
+
+```shell
+$ systemctl restart docker.service
+$ sudo service docker restart
+```
+
+#### 
