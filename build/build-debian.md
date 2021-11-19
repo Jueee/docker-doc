@@ -29,7 +29,7 @@ $ apt-get update
 
 ```
 apt-get install libtinfo5
-apt-get install vim
+apt-get install vim -y
 ```
 
 ##### 安装aptitude
@@ -74,7 +74,7 @@ apt-get install iputils-ping
 ##### 安装 netstat
 
 ```
-apt-get install net-tools
+apt-get install net-tools -y
 ```
 
 ##### 安装MySQL
@@ -85,3 +85,12 @@ apt-get install -f default-mysql-server
 service mysql start
 mysql -uroot
 ```
+
+### 后台一直运行
+
+做一个死循环，持续输出任意：
+
+```bash
+$ docker run --name wyqdebian -d  debian:buster /bin/sh -c "while true; do echo hello world; sleep 1; done"
+```
+
